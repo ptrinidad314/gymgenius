@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Edit My Profile";
+}
+
+@model WorkoutApp.Models.UserDto
+
+@await Html.PartialAsync("_navigation")
+
+<div class="userUI">
+
+    <h1>Edit My Profile</h1>
+
+    <form action="/user/updatemyprofile/" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="hidden" name="objectid" value="@Model.ObjectId" />
+
+        <label for="username">User Name</label>
+        <input id="username" type="text" name="username" value="@Model.UserName" placeholder="Enter username..." />
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" value="@Model.Email" placeholder="Enter email..." />
+        <label for="height">Height</label>
+        <input id="height" type="number"  name="height" value="@Model.Height" placeholder="Enter height..." />
+        <label for="weight">Weight</label>
+        <input id="weight" type="number" name="weight" value="@Model.Weight" placeholder="Enter weight..."/>
+
+        <button type="submit"><i class="fas fa-edit"></i> Update</button>
+        <a href="/user/viewmyprofile/@Model.Id"><i class="fas fa-chevron-circle-left"></i> Back</a>
+    </form>
+
+</div>

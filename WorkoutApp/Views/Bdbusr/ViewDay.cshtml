@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.title = "View Workout";
+}
+
+@model WorkoutApp.Models.DayDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="admUI">
+    <div class="userUI_Inner">
+        <h1>View Workout</h1>
+
+        <p>Workout Name: @Model.Name</p>
+        <p>Workout Date: @Model.Date</p>
+
+        <p>Workout Notes: @Model.Notes</p>
+        <a href="/bdbusr/editday/@Model.Id" class="btnSecondary"><i class="fas fa-edit"></i> Edit Workout Info</a>
+
+        @foreach (var e in Model.Exercises)
+        {
+            <div>
+                <p>Exercise Name: @e.Name</p>
+
+                @foreach (var w in Model.Workloads)
+                {
+                    if (@w.ExerciseId == @e.Id)
+                    {
+                        <p>Sets: @w.Sets</p>
+                        <p>Reps: @w.Reps</p>
+                        <p>Weight: @w.Weight</p>
+                        <p>Duration: @w.Duration</p>
+                        <p>Distance: @w.Distance</p>
+                        <p>Notes: @w.Notes</p>
+                        <a href="/bdbusr/updateworkload/@w.Id" class="btnSecondary"><i class="fas fa-pen-square"></i> Update Exercise</a>
+                        <form method="post" action="/bdbusr/deleteexercisefromday/@w.Id">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btnSecondary"><i class="fas fa-minus-square"></i> Remove Exercise</button>
+                        </form>
+                    }
+
+                }
+            </div>
+
+        }
+
+        <a href="/bdbusr/addExerciseToDay/@Model.Id"><i class="fas fa-plus-square"></i> Add Exercise</a>
+        <form method="post" action="/bdbusr/deleteday/@Model.Id">
+            @Html.AntiForgeryToken()
+            <button type="submit"><i class="fas fa-calendar-minus"></i> Delete Workout</button>
+        </form>
+
+
+    </div>
+    <a href="/bdbusr/">Admin Home</a>
+</div>

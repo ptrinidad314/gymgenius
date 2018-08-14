@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "ViewMyDay";
+}
+
+@model WorkoutApp.Models.DayDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <div class="userUI_Inner">
+        <h1>View My Workout</h1>
+
+        @*<p>User Name: @Model.User.FirstName @Model.User.LastName</p>*@
+        <p>Workout Name: @Model.Name</p>
+        <p>Workout Date: @Model.Date</p>
+        @*<p>Workout Id: @Model.Id</p>
+            <p>User Id: @Model.UserId</p>*@
+        <p>Workout Notes: @Model.Notes</p>
+        <a href="/day/editmyday/@Model.Id" class="btnSecondary"><i class="fas fa-edit"></i> Edit Workout Info</a>
+
+        @foreach (var e in Model.Exercises)
+        {
+            <div>
+                <p>Exercise Name: @e.Name</p>
+
+                @foreach (var w in Model.Workloads)
+                {
+                    if (@w.ExerciseId == @e.Id)
+                    {
+                        <p>Sets: @w.Sets</p>
+                        <p>Reps: @w.Reps</p>
+                        <p>Weight: @w.Weight</p>
+                        <p>Duration: @w.Duration</p>
+                        <p>Distance: @w.Distance</p>
+                        <p>Notes: @w.Notes</p>
+                        <a href="/exercise/updatemyworkload/@w.Id" class="btnSecondary"><i class="fas fa-pen-square"></i> Update Exercise</a>
+                        <form method="post" action="/exercise/deleteexercisefrommyday/@w.Id">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btnSecondary"><i class="fas fa-minus-square"></i> Remove Exercise</button>
+                        </form>
+                    }
+
+                }
+            </div>
+
+        }
+
+        <a href="/exercise/addExerciseToMyDay/@Model.Id"><i class="fas fa-plus-square"></i> Add Exercise</a>
+        <form method="post" action="/day/deletemyday/@Model.Id">
+            @Html.AntiForgeryToken()
+            <button type="submit"><i class="fas fa-calendar-minus"></i> Delete Workout</button>
+        </form>
+        <a href="/user/viewmyprofile/@Model.UserId"><i class="fas fa-address-card"></i> My Profile</a>
+        <a href="/day/viewmydays/@Model.UserId"><i class="fas fa-chevron-circle-left"></i> Back</a>
+
+    </div>
+</div>

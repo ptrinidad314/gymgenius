@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model WorkoutApp.Models.AccountRequestDto
+
+@await Html.PartialAsync("_navigation")
+
+<div class="admUI">
+    <form action="/account/editaccountrequest" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.id" />
+
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email" value="@Model.Email" />
+        <label for="complete">Account Created</label>
+        @Html.EditorFor(x=>x.Complete)
+        <button type="submit">Update</button>
+
+    </form>
+</div>

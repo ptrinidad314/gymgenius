@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "My Workouts";
+}
+
+@model WorkoutApp.Models.UserDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>My Workouts</h1>
+
+    @foreach (var d in Model.Days)
+    {
+        <a href="/day/ViewMyDay/@d.Id">@d.Date.Month/@d.Date.Day/@d.Date.Year - @d.Name</a>
+        
+    }
+    <a href="/user/viewmyprofile/@Model.Id"><i class="fas fa-chevron-circle-left"></i> Back</a>
+</div>

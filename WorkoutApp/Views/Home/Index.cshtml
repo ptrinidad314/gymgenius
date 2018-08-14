@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Home";
+}
+
+@model WorkoutApp.Models.UserDto
+
+
+<header id="showcase">
+    <img class="animated bounceInUp" src="~/img/LogoMakr_30OEJn.png" alt="Gym Genius Logo" />
+    <p>
+        Workout Smarter
+    </p>
+    <a id="getMoving" href="#" class="button"><i class="fas fa-walking"></i> Get Moving</a>
+</header>
+
+
+<section id="section-a">
+
+    @await Html.PartialAsync("_navigation")
+
+    <div class="slideshow-container">
+        <div class="slides animated flipInY" style="display:block;">
+            <img class="slideImage" src="~/img/vec_squat_edit.png" alt="workout" />
+            <div class="slideshowText">Plan your workouts</div>
+        </div>
+        <div class="slides animated flipInY">
+            <img class="slideImage" src="~/img/vec_yoga.png" alt="workout" />
+            <div class="slideshowText">Make Gains</div>
+        </div>
+        <div class="slides animated flipInY">
+            <img class="slideImage" src="~/img/vec_phone_edit.png" alt="workout" />
+            <div class="slideshowText">Track your progress</div>
+        </div>
+        <div class="slides animated flipInY">
+            <img class="slideImage" src="~/img/vec_run3_edit.png" alt="workout" />
+            <div class="slideshowText">Let's Go!</div>
+        </div>
+    </div>
+
+    <div class="sectionAButton">
+        @if (User.Identity.IsAuthenticated && Model.hasAccount == true)
+        {
+            <a href="/user/viewmyprofile/@Model.Id" class="button"><i class="fa fa-address-card"></i> View My Profile</a>
+        }
+        else if(User.Identity.IsAuthenticated && Model.hasAccount == false)
+        {
+            <a href="/account/createaccountrequest" class="button">Sign Up</a>
+        }
+        else
+        {
+            <div><a href="/auth/signin" class="button"><i class="fas fa-sign-in-alt"></i> Sign In</a></div>
+            <br />
+            <div><a href="/account/createaccountrequest" class="button"><i class="fas fa-user-plus"></i> Sign Up</a></div>    
+        }
+    </div>
+
+</section>

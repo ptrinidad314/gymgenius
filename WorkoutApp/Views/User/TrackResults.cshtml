@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Track Your Gains";
+}
+
+@model WorkoutApp.Models.TrackResultsDto
+
+@await Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>Track Your Gains</h1>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js" integrity="sha256-JG6hsuMjFnQ2spWq0UiaDRJBaarzhFbUxiUTxQDA9Lk=" crossorigin="anonymous"></script>
+
+    <canvas id="line-chart" width="800" height="450"></canvas>
+    <a href="/user/selectexercisetotrack/@Model.UserId"><i class="fas fa-chevron-circle-left"></i> Back</a>
+</div>
+
+<script>
+
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(Model.Labels), 
+            datasets: [{
+                data: @Html.Raw(Model.Data),
+                label: @Html.Raw(Model.ExerciseName),
+                borderColor: "#3e95cd",
+                fill: false
+            },
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: @Html.Raw(Model.ChartTitle) 
+            }
+        }
+    });
+
+
+
+</script>

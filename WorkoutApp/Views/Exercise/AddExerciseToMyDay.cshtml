@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Add Exercise";
+}
+
+@using WorkoutApp.Domain
+@model WorkoutApp.Models.DayDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>Add Exercise to Workout</h1>
+
+    <form action="/exercise/AddExerciseToMyDay" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="dayId" value="@Model.Id" />
+
+        <label for="exerciseName">Exercise Name</label>
+        <input id="exerciseName" list="exerciseList" name="exerciseName" value="" />
+        <datalist id="exerciseList">
+            @foreach (var e in Model.Exercises)
+            {
+                <option value="@e.Name">@e.Name</option>
+            }
+        </datalist>
+
+        <label for="exerciseType">Exercise Type</label>
+        <input id="exerciseType" list="exerciseTypeList" name="exerciseType" value="" />
+        <datalist id="exerciseTypeList">
+            @foreach (var t in Enum.GetValues(typeof(ExerciseType)))
+            {
+                <option value="@t"></option>
+            }
+        </datalist>
+
+        <label for="sets">Sets</label>
+        <input id="sets" type="number" name="sets" value="0" />
+        <label for="reps">Reps</label>
+        <input id="reps" type="number" name="reps" value="0" />
+        <label for="duration">Duration</label>
+        <input id="duration" type="number" name="duration" value="0" />
+        <label for="weight">Weight</label>
+        <input id="weight" type="number" name="weight" value="0" />
+
+        <button type="submit"><i class="fas fa-edit"></i> Submit</button>
+        <a href="/day/viewmyday/@Model.Id"><i class="fas fa-chevron-circle-left"></i> Back</a>
+
+    </form>
+</div>

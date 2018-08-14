@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Create User";
+}
+
+@await Html.PartialAsync("_navigation")
+
+<div class="admUI">
+    <h1>Create User</h1>
+
+    <form action="/bdbusr/createuser" method="post">
+        @Html.AntiForgeryToken()
+
+        <label for="objectId">Object Id</label>
+        <input id="objectId" type="text" name="ObjectId" value="" placeholder="Enter Object ID..." required />
+        <label for="username">User Name</label>
+        <input id="username" type="text" name="UserName" value="" placeholder="Enter User Name..." required />
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" value="" placeholder="Enter Email..." />
+
+        <button type="submit">Submit</button>
+
+    </form>
+    <a href="/bdbusr/">Admin Home</a>
+</div>

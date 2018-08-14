@@ -1,0 +1,387 @@
+﻿*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: black;
+    line-height: 1.6;
+    max-width: 1000px;
+}
+
+footer {
+    color:white;
+    text-align: center;
+    padding: 10px;
+    background: rgb(113,193,39);
+    background: linear-gradient(0deg, rgba(113,193,39,1) 0%, rgba(145,253,45,1) 100%);
+}
+
+footer a{
+    color:white;
+    font-size:10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(113,193,39);
+    background: linear-gradient(0deg, rgba(113,193,39,1) 0%, rgba(145,253,45,1) 100%);
+}
+
+
+nav p{
+    color:white;
+}
+
+nav a{
+    margin: 3px;
+    padding: 10px;
+    text-decoration:none;
+    background-color:transparent;
+    color: white;
+}
+
+nav a.signIn{
+    border:1px solid white;
+    border-radius:5px;
+}
+
+
+nav button{
+    padding:10px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: 17px;
+    border-radius:5px;
+}
+
+
+nav img{
+    max-height:50px;
+}
+
+#showcase {
+    background: url('../img/trianglify (2).svg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+#showcase img{
+    width:80%;
+    max-width:500px;
+}
+
+#showcase h1{
+    font-size: 50px;
+    line-height:1.2;
+}
+
+#showcase p{
+    font-size:20px;
+}
+
+#showcase .button{
+    font-size:18px;
+    text-decoration:none;
+    color:white;
+    border: white 1px solid;
+    padding:10px 20px;
+    border-radius: 10px;
+    margin-top:20px;
+}
+
+#showcase .button:hover{
+    background-color:white;
+    color:black;
+}
+
+.slideshow-container{
+    max-width:750px;
+    position:relative;
+    margin:auto;
+    
+    margin-bottom:15%;
+}
+
+.slideImage {
+    vertical-align: middle;
+    width: 100%;
+    height:30%;
+    max-height: 400px;
+    max-width: 500px;
+    color:yellow;
+    background-color:papayawhip;
+}
+
+.slides {
+    display: none;
+    
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+
+.slideshowText {
+    color: white;
+    font-size: 1.5em; 
+    padding: 8px 12px;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    
+}
+
+
+#section-a {
+    padding: 10px;
+    background: url('../img/trianglify (2).svg');
+    color: white;
+    text-align: center;
+    height: 100%; 
+    min-height:100vh;
+}
+
+#section-a .sectionAButton{
+    margin:20px;
+    display:block;
+}
+
+#section-a div a {
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    border: white 1px solid;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin:20px;
+    
+}
+
+#section-a div a:hover{
+    background-color: chartreuse;
+    color: white;
+}
+
+
+.userUI {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    padding: 10px 10px;
+    background: url('../img/trianglify (2).svg');
+    color: white;
+}
+
+.userUI_Inner{
+    max-width: 800px;
+    margin:0 auto;
+}
+
+.userUI form.inputForm{
+    max-width:500px;
+    margin:0 auto;
+}
+
+.userUI h1, h3, p{
+    text-align:center;
+}
+
+    .userUI a {
+        color: white;
+        background-color:lightgray;
+        text-decoration: none;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding: 20px;
+        display: block;
+        margin: 10px auto;
+        width:75%;
+        font-size:20px;
+        text-align:center; 
+    }
+
+    .userUI a.myDays{
+        width:20%;
+        display:inline;
+    }
+
+.userUI a:hover{
+    color:white;
+    background-color:chartreuse;
+    border: 1px solid chartreuse;
+   
+}
+
+.userUI a.btnSecondary{
+   padding:10px;
+   font-size:15px;
+   width:50%;
+   
+}
+
+.userUI div.keyValue{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.userUI div.keyValue input{
+    
+}
+
+
+.userUI input{
+    display:block;
+    width:75%;
+    margin:10px auto;
+    padding:10px;
+    font-size:20px;
+}
+
+.userUI label {
+    display: block;
+    width: 75%;
+    margin: 5px auto;
+    font-size: 15px;
+}
+
+.userUI textarea{
+    display:block;
+    width: 75%;
+    margin: 5px auto;
+    padding:10px;
+    font-size:20px;
+}
+
+.userUI button{
+    color:white;
+    background-color:lightgray;
+    border:1px solid lightgray;
+    border-radius:5px;
+    display:block;
+    width: 75%;
+    margin:20px auto;
+    padding:20px;
+    font-size: 20px;
+}
+
+.userUI button:hover{
+    color:white;
+    background-color:chartreuse;
+}
+
+.userUI button.btnSecondary{
+    padding:10px;
+    font-size:15px;
+    width:50%;
+}
+
+.userUI canvas{
+    background-color:rgba(256,256,256, 0.8);
+    color:white;
+}
+
+.grid-col-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+.grid-col-2 img{
+    max-width:400px;
+    margin:0 auto;
+}
+
+.grid-col-3{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+h3.grid-col-3, div.grid-col-3{
+    border:1px solid black;
+}
+
+.grid-col-4{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+}
+
+.admUI {
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: paleturquoise;
+}
+
+.admUI a{
+    display:block;
+}
+
+.admUI input,select{
+    display:block;
+    margin:10px auto;
+    width:75%;
+    padding:5px;
+}
+
+.admUI button{
+    padding:10px;
+    border-radius: 5px;
+}
+
+
+.createDay {
+    padding: 10px;
+}
+
+.createDay input{
+    display:block;
+    margin:10px;
+}
+
+.createDay button{
+    display:block;
+    margin:10px;
+}
+
+.createDay li{
+    list-style: none;
+}
+
+@media screen and (min-width: 1000px){
+
+    .slideshow-container {       
+        margin-bottom: 5%;
+    }
+
+    .slideImage {
+        max-height: 600px;
+        max-width: 500px;
+    }
+
+    .slideshowText {
+        top: 85%;
+    }
+
+}

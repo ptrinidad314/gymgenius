@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int idNum = 0;
+    string exerciseNameId = "";
+    ViewBag.Title = "Select Exercise";
+}
+
+@model WorkoutApp.Models.SelectExerciseDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>Select Exercise To Track</h1>
+
+    <form class="inputForm" action="/user/trackresults" method="get">
+        <input type="hidden" name="userId" value="@Model.UserId" />
+
+
+        @foreach (var e in Model.Exercises)
+        {
+            exerciseNameId = "exerciseName" + idNum.ToString();
+            <div class="keyValue">
+                <label for=@exerciseNameId>@e.Name</label>
+                <input id=@exerciseNameId type="radio" name="SelectedExerciseName" value="@e.Name" />
+            </div>
+
+            idNum++;
+        }
+
+        <button type="submit"><i class="fas fa-chart-line"></i> Select</button>
+        <a href="/user/viewmyprofile/@Model.UserId"><i class="fas fa-chevron-circle-left"></i> Back</a>
+    </form>
+    
+</div>
+

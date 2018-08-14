@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<nav id="section-nav">
+    <a href="/home/index"><img class="navLogo" src="~/img/gymGenius_noText.png" alt="Gym Genius Logo" /></a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>Hello @User.Claims.Where(p => p.Type == "name").FirstOrDefault().Value</p>
+        <form method="post" action="/auth/SignOut">
+            <button type="submit"><i class="fas fa-sign-out-alt"></i></button>
+        </form>
+
+    }
+    else
+    {
+        <a class="signIn" href="/auth/signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+    }
+</nav>

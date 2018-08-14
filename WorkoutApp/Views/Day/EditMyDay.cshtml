@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewBag.Title = "Edit Workout";
+}
+
+@model WorkoutApp.Models.DayDto
+
+@await Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>Edit Workout Info</h1>
+
+    <form class="inputForm" action="/Day/editmyday/@Model.Id" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="hidden" name="userid" value="@Model.UserId" />
+        <label for="name">Workout Name</label>
+        <input id="name" type="text" name="name" placeholder="Name..." value="@Model.Name" />
+        <label for="date">Date</label>
+        <input id="date" type="datetime" name="date" placeholder="Date..." value="@Model.Date" />
+        <label for="notes">Notes</label>
+
+        <textarea id="notes" name="notes" rows="3" cols="33" maxlength="200" wrap="hard" placeholder="Notes...">
+            @Model.Notes
+        </textarea>
+        <button type="submit"><i class="fas fa-edit"></i> Submit</button>
+        <a href="/day/viewmyday/@Model.Id"><i class="fas fa-chevron-circle-left"></i> Back</a>
+    </form>
+
+</div>

@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>Request Account</h1>
+
+    <form action="/account/createaccountrequest" method="post">
+        @Html.AntiForgeryToken()
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" value="" placeholder="Enter your email..." />
+        <button type="submit">Submit</button>
+
+    </form>
+</div>

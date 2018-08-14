@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Update Exercise";
+}
+
+@using WorkoutApp.Domain
+@model WorkoutApp.Models.ExerciseDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="admUI">
+    <h1>Update Exercise</h1>
+
+    <form action="/bdbusr/UpdateExercise" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="text" name="Name" value="@Model.Name" />
+        <select name="Type" value="@Model.Type">
+            @foreach (var e in Enum.GetValues(typeof(ExerciseType)))
+            {
+                if (@Model.Type.ToString() == @e.ToString())
+                {
+            <option value="@e" selected>@e</option>
+                }
+                else
+                {
+            <option value="@e">@e</option>
+                }
+
+
+            }
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/bdbusr/">Admin Home</a>
+</div>

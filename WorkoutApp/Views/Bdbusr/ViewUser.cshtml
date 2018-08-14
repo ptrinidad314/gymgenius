@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "View User";
+}
+
+@model WorkoutApp.Models.UserDto
+
+@await Html.PartialAsync("_navigation")
+
+<div class="admUI">
+    <h1>View User</h1>
+
+    <p>ID: @Model.Id</p>
+    <p>Object ID: @Model.ObjectId</p>
+    <p>User Name: @Model.UserName</p>
+    <p>Email: @Model.Email</p>
+    <p>Height: @Model.Height</p>
+    <p>Weight: @Model.Weight</p>
+
+    <h3>Workouts</h3>
+    <ul>
+        @foreach (var d in Model.Days)
+        {
+            <li><a href="/bdbusr/viewday/@d.Id">@d.Name - @d.Date</a></li>
+
+        }
+    </ul>
+
+    <a href="/bdbusr/updateuser/@Model.Id">Update User Info</a>
+    <a href="/bdbusr/viewusers/">View Users</a>
+    <a href="/bdbusr/createday/@Model.Id">Create Day</a>
+    <a href="/bdbusr/">Admin Home</a>
+</div>

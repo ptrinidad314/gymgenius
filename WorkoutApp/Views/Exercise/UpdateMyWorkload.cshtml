@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Update Exercise Workload";
+}
+
+@model WorkoutApp.Models.WorkloadDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>Update Exercise Workload</h1>
+
+    <h3>@Model.exerciseName</h3>
+
+    <form class="inputForm" action="/exercise/updatemyworkload" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="workloadId" value="@Model.workloadId" />
+        <input type="hidden" name="dayId" value="@Model.dayId" />
+        
+        <label for="Sets">Sets</label>
+        <input id="Sets" type="number" name="sets" value="@Model.sets" />
+        <label for="Reps">Reps</label>
+        <input id="Reps" type="number" name="reps" value="@Model.reps" />
+        <label for="Weight">Weight</label>
+        <input id="Weight" type="number" name="weight" value="@Model.weight" />
+        <label for="Duration">Duration</label>
+        <input id="Duration" type="number" name="duration" value="@Model.duration" />    
+        <label for="Distance">Distance</label>
+        <input id="Distance" type="number" name="distance" value="@Model.distance" />      
+        <label for="Notes">Notes</label>
+        <textarea id="Notes" name="notes" rows="3" cols="33" maxlength="200" wrap="hard">
+            @Model.Notes
+        </textarea>
+        
+        <button type="submit"><i class="fas fa-edit"></i> Update</button>
+        <a href="/day/viewmyday/@Model.dayId"><i class="fas fa-chevron-circle-left"></i> Back</a>
+    </form>
+</div>
+
+

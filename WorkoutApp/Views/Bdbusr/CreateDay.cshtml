@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Create Workout";
+}
+
+@model WorkoutApp.Models.DayDto
+
+@await Html.PartialAsync("_navigation")
+
+<div class="admUI">
+    <h1>Plan Workout</h1>
+
+    <form action="/bdbusr/createday/" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="userId" value="@Model.UserId" />
+
+        <label for="name">Workout Name</label>
+        <input id="name" type="text" name="name" placeholder="Add a workout name..." />
+        <label for="date">Date</label>
+        <input id="date" type="datetime" name="date" value="@Model.Date" />
+
+        <label for="exercisesToAddList">Exercises</label>
+        <ul id="exercisesToAddList">
+            <li><input type="text" value="" list="exerciseList" name="exerciseNames" placeholder="Add an exercise..." /></li>
+        </ul>
+        <datalist id="exerciseList">
+            @foreach (var e in @Model.Exercises)
+            {
+                <option value="@e.Name">@e.Name</option>
+            }
+        </datalist>
+        <button type="button" id="btnAddExercise"><i class="fas fa-plus"></i> Add another exercise</button>
+        <button type="submit"><i class="fas fa-calendar-plus"></i> Create Workout</button>
+        <a href="/bdbusr/viewuser/@Model.UserId"><i class="fas fa-chevron-circle-left"></i> Back</a>
+    </form>
+    <a href="/bdbusr/">Admin Home</a>
+</div>
+

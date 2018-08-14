@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "View Exercises";
+}
+
+@model IEnumerable<WorkoutApp.Models.ExerciseDto>
+
+@await Html.PartialAsync("_navigation")
+<div class="admUI">
+    <h1>View exercises</h1>
+
+    <div class="grid-col-4">
+        <h3>Exercise Name</h3>
+        <h3>Exercise ID</h3>
+        <h3>View Exercise</h3>
+        <h3>Delete Exercise</h3>
+        @foreach (var e in Model)
+        {
+            <p>@e.Name</p>
+            <p>@e.Id</p>
+            <a href="/bdbusr/viewexercise/@e.Id">View</a>
+            <form action="/bdbusr/deleteexercise/@e.Id" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit">Delete</button>
+            </form>
+        }
+    </div>
+
+    <a href="/bdbusr/createexercise">Create a new exercise</a>
+    <a href="/bdbusr/">Admin Home</a>
+</div>

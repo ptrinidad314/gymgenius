@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Update User";
+}
+
+@model WorkoutApp.Models.UserDto
+
+@await  Html.PartialAsync("_navigation")
+
+<div class="admUI">
+    <h1>Update User</h1>
+
+    <form action="/bdbusr/UpdateUser" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="hidden" name="objectid" value="@Model.ObjectId" />
+
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email" value="@Model.Email" placeholder="Add email..." />
+
+        <label for="objectId">Azure AD Object Id</label>
+        <input id="objectId" type="text" name="objectId" value="@Model.ObjectId" required />
+
+        <div>
+            <label for="username">User Name</label>
+            <input id="username" type="text" name="UserName" value="@Model.UserName" />
+        </div>
+        <div>
+            <label for="height">Height</label>
+            <input id="height" type="number" name="Height" value="@Model.Height" />
+        </div>
+        <div>
+            <label for="weight">Weight</label>
+            <input id="weight" type="number" name="Weight" value="@Model.Weight" />
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/bdbusr/">Admin Home</a>
+</div>

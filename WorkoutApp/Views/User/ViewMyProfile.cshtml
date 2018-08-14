@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "My Profile";
+}
+
+@model WorkoutApp.Models.UserDto
+
+@await Html.PartialAsync("_navigation")
+
+<div class="userUI">
+    <h1>My Profile</h1>
+    <p>User name: @Model.UserName</p>
+    <p>Email: @Model.Email</p>
+    <p>Height: @Model.Height</p>
+    <p>Weight: @Model.Weight</p>
+    
+    <a href="/day/createmyday/@Model.Id"><i class="fa fa-dumbbell"></i>  Plan a new workout</a>
+    <a href="/day/viewMyDays/@Model.Id"><i class="fa fa-tasks"></i>  View My Workouts</a>
+    <a href="/user/SelectExerciseToTrack/@Model.Id"><i class="fa fa-chart-line"></i>  Track your results</a>
+    <a href="/user/updateMyProfile/@Model.Id"><i class="fa fa-edit"></i> Update My Profile</a>
+</div>
